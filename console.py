@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, line):
         """Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id"""
         arg = line.split()
-        if len(arg) != 1:
+        if len(arg) < 1:
             print("** class name missing **")
             return
         elif arg[0] != "BaseModel":
@@ -29,8 +29,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             new = BaseModel()
             basedict = new.to_dict()
-            with open("file.json", 'a') as jsonfile:
-                json.dump(basedict, jsonfile)
+            with open("file.json", 'a') as f:
+                json.dump(basedict, f)
             print(new.id)
 
     def do_show(self, line):
