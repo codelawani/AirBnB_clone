@@ -2,6 +2,7 @@
 import cmd
 import json
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 """This module contains the entry point of the command interpreter"""
 
 
