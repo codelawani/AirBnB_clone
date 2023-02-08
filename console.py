@@ -46,8 +46,14 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg) < 2:
             print('** instance id missing **')
             return
-        with open("file.json") as jsonfile:
-            basedict = json.load(jsonfile)
+        with open("file.json") as f:
+            basedict = json.load(f)
+        baseid = arg[1]
+        # checkid = basedict.find(f"id.{baseid}")
+        if basedict["id"] != baseid:
+            print("** no instance found **")
+        else:
+            print("found")
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id"""
