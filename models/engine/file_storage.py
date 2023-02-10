@@ -26,6 +26,5 @@ class FileStorage:
         try:
             with open(self.__file_path) as f:
                 self.__objects = json.load(f)
-                return self.__objects
         except (FileNotFoundError):
             pass
