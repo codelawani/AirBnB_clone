@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg[0] != "BaseModel":
             print("** class doesn't exist **")
             return
-        elif len(arg) < 2:
+        elif len(arg) == 1:
             print('** instance id missing **')
             return
         with open("file.json") as jsonfile:
@@ -60,6 +60,17 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg) < 2:
             print("** instance id missing **")
             return
+
+    def do_all(self, line):
+        arg = line.split()
+        if arg[0] != "BaseModel":
+            print("class doesn't exist")
+        else:
+            print("[\"{}\"]".format(BaseModel().__str__()))
+
+    def do_update(self, line):
+        """Updates an Instance"""
+        
 
 
 if __name__ == '__main__':
