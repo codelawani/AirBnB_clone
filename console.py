@@ -46,13 +46,13 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg) < 2:
             print('** instance id missing **')
             return
-        basedict = storage.reload()
+        model_dict = storage.reload()
         model_info = f"{arg[0]}.{arg[1]}"
-        # checkid = basedict.find(f"{modelName}.{baseid}")
-        if model_info not in basedict:
+        # checkid = model_dict.find(f"{modelName}.{baseid}")
+        if model_info not in model_dict:
             print("** no instance found **")
         else:
-            objdict = basedict[model_info]
+            objdict = model_dict[model_info]
             obj = BaseModel(**objdict)
             print(obj)
 
@@ -78,7 +78,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """Prints all string representation of all instances based or not on the class name"""
-        if line.split()[0] != "BaseModel":
+        args = line.split()
+        if args and args[0] != "BaseModel":
             print("** class doesn't exist **")
         else:
             modeldict = storage.reload()
@@ -88,6 +89,50 @@ class HBNBCommand(cmd.Cmd):
             for dict in objdicts:
                 objs.append(BaseModel(**dict).__str__())
             print(objs)
+
+    def do_update(self, line):
+        """Updates an instance based on the class name and id by adding or updating attribute"""
+        arg = line.split()
+        if len(arg) < 1:
+            print("** class name missing **")
+            return
+        elif arg[0] != "BaseModel":
+            print("** class doesn't exist **")
+            return
+        elif len(arg) < 2:
+            print("** instance id missing **")
+            return
+        elif len(arg) < 3:
+            print("** attribute name missing **")
+            return
+        elif len(arg) < 4:
+            print("** value missing **")
+            return
+        class_name = arg[0]
+        class_id = arg[1]
+        attribute_name = arg[2]
+        # if isinstance(arg[3], str):
+        try:
+            attribute_value = int(arg[3])
+        except:
+            try:
+                attribute_value = float(arg[3])
+            except:
+                attribute_value = str(arg[3]).strip('\'"')
+        models_dict = storage.all()
+
+        model_info = f"{class_name}.{class_id}"
+        if model_info not in models_dict:
+            print("** no instance found **")
+        else:
+            objdict = models_dict[model_info]
+            print(attribute_value)
+            print(type(attribute_value))
+            objdict[attribute_name] = attribute_value
+            # del models_dict[model_info]
+            print(objdict)
+            newModel = BaseModel(**objdict)
+            newModel.save()
 
 
 if __name__ == '__main__':

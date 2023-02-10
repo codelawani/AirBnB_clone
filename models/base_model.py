@@ -8,10 +8,6 @@ from models import storage
 class BaseModel:
     """defines all common attributes/methods for other classes"""
 
-    """ id = str(uuid.uuid4())
-    created_at = datetime.today()
-    updated_at = datetime.today() """
-
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
