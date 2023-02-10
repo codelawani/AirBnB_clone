@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg) < 2:
             print('** instance id missing **')
             return
-        model_dict = storage.reload()
+        model_dict = storage.all()
         model_info = f"{arg[0]}.{arg[1]}"
         # checkid = model_dict.find(f"{modelName}.{baseid}")
         if model_info not in model_dict:
@@ -69,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         model_info = f"{arg[0]}.{arg[1]}"
-        model_dict = storage.reload()
+        model_dict = storage.all()
         checkdict = model_dict.pop(model_info, None)
         if not checkdict:
             print("** no instance found **")
@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
         if args and args[0] != "BaseModel":
             print("** class doesn't exist **")
         else:
-            modeldict = storage.reload()
+            modeldict = storage.all()
             models = modeldict.values()
             objdicts = [model for model in models]
             objs = []
