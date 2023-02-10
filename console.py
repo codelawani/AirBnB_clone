@@ -3,6 +3,11 @@ import cmd
 import json
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 from models.engine.file_storage import FileStorage
 from models import storage
 """This module contains the entry point of the command interpreter"""
@@ -11,7 +16,13 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     """Defines command interpreter class"""
     prompt = "(hbnb) "
-    models = {"BaseModel": BaseModel, "User": User}
+    models = {"BaseModel": BaseModel,
+              "User": User,
+              "State": State,
+              "City": City,
+              "Amenity": Amenity,
+              "Place": Place,
+              "Review": Review}
 
     def do_EOF(self, line):
         """Handle EOF"""
@@ -122,7 +133,6 @@ class HBNBCommand(cmd.Cmd):
         class_string = arg[0]
         class_id = arg[1]
         attribute_name = arg[2]
-        # if isinstance(arg[3], str):
         try:
             attribute_value = int(arg[3])
         except:
@@ -138,9 +148,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             obj = objects[model_info]
             setattr(obj, attribute_name, attribute_value)
-            """ for key, value in self.models.items():
-                if class_string == key:
-                    newModel = value(**objdict) """
+
             obj.save()
 
 

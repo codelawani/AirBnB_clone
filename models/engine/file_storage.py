@@ -21,10 +21,7 @@ class FileStorage:
 
     def save(self):
         """ serializes __objects to the JSON file (path: __file_path)"""
-        print("so", self.__objects)
-        # print(self.__ob)
         objects = {key: obj.to_dict() for key, obj in self.__objects.items()}
-        print("ob:", objects)
         with open(self.__file_path, 'w') as f:
             json.dump(objects, f)
 
@@ -32,7 +29,18 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         from models.base_model import BaseModel
         from models.user import User
-        classmap = {"BaseModel": BaseModel, "User": User}
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
+        classmap = {"BaseModel": BaseModel,
+                    "User": User,
+                    "State": State,
+                    "City": City,
+                    "Amenity": Amenity,
+                    "Place": Place,
+                    "Review": Review}
 
         try:
             with open(self.__file_path) as f:
@@ -44,7 +52,7 @@ class FileStorage:
                 if clsname:
                     obj = clsname(**objdict)
                     self.new(obj)
-
+            # Alternative method using eval(removed due to unsafe nature)
             # for key, objdict in objects.items():
             #    classname = objdict["__class__"]
             #    print(classname)
