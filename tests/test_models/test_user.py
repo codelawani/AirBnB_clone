@@ -41,7 +41,7 @@ class TestUser(unittest.TestCase):
             if eval("User.{}.__doc__".format(method)) is not None:
                 self.assertGreater(len(eval("User.{}.__doc__".format(method))), 0)
 
-    def test_init-and_class_vars(self):
+    def test_init_and_class_vars(self):
         """Tests __init__ and class variables"""
         self.assertIsInstance(self.test_user, User)
         self.assertIsInstance(self.test_user, BaseModel)
