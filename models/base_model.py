@@ -6,9 +6,11 @@ from models import storage
 
 
 class BaseModel:
-    """defines all common attributes/methods for other classes"""
+    """defines all common attributes/methods
+    for other classes"""
 
     def __init__(self, *args, **kwargs):
+        """Initialise new instances"""
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -28,17 +30,19 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        """Return object in string format"""
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
+        """Save objects"""
         self.updated_at = datetime.today()
         storage.save()
 
     def to_dict(self):
-        #        return {'my_number': self.my_number, 'name': self.__class__.__name__, id: self.id}
-        trial = dict(self.__dict__)
-        trial['id'] = self.id
-        trial['created_at'] = self.created_at.isoformat()
-        trial['updated_at'] = self.updated_at.isoformat()
-        trial['__class__'] = self.__class__.__name__
-        return trial
+        """convert object to dict"""
+        objdict = dict(self.__dict__)
+        objdict['id'] = self.id
+        objdict['created_at'] = self.created_at.isoformat()
+        objdict['updated_at'] = self.updated_at.isoformat()
+        objdict['__class__'] = self.__class__.__name__
+        return objdict
