@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 import unittest
 from datetime import datetime
 
@@ -44,13 +45,19 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(b1.id, self.b.id)
         self.assertIsNot(b1, self.b)
 
-    def test_str(self):
+    def test___str__(self):
         b1 = BaseModel()
         self.assertIsInstance(b1.__str__(), str)
 
     def test_save(self):
         b1 = BaseModel()
+        # b1.id = 1
         b1.save()
+        storage = FileStorage()
+        obj = storage.all()
+        key = f"{b1.__class__.__name__}.{b1.id}"
+
+        self.assertIs(b1, obj[key])
 
     def test_to_dict(self):
         """Tests the to_dict method of the BaseModel instance"""
