@@ -161,6 +161,15 @@ class HBNBCommand(cmd.Cmd):
 
             obj.save()
 
+    def do_User(self, line):
+        return self.do_all("User")
+
+    def do_Base(self, line):
+        return self.do_all("Base")
+
+    def do_City(self, line):
+        return self.do_all("City")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
