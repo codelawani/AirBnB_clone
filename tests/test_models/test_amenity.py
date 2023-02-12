@@ -29,7 +29,7 @@ class TestAmenity(unittest.TestCase):
             pass
 
     def test_attr_Amen(self):
-        """chekcing if amenity have attibutes"""
+        """checking if amenity have attibutes"""
         self.assertTrue('id' in self.lord.__dict__)
         self.assertTrue('created_at' in self.lord.__dict__)
         self.assertTrue('updated_at' in self.lord.__dict__)
