@@ -3,13 +3,19 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import unittest
 from datetime import datetime
+"""Tests the BaseModels"""
 
 
 class TestBaseModel(unittest.TestCase):
+    """Tests for BaseModel"""
+
     def setUp(self):
+        """Sets up test methods"""
         self.b = BaseModel()
 
     def test_init(self):
+        """Tests the creation of
+        an instance of BaseModel"""
         b1 = BaseModel()
         self.assertIsInstance(b1, BaseModel)
         self.assertTrue(b1.id)
@@ -17,16 +23,20 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(b1.updated_at)
 
     def test_id(self):
+        """Tests the id of the BaseModel instance"""
         b1 = BaseModel()
         self.assertIsInstance(b1.id, str)
         self.assertEqual(len(b1.id), 36)
 
     def test_unique_id(self):
+        """Test if id is unique"""
         b1 = BaseModel()
         b2 = BaseModel()
         self.assertNotEqual(b1.id, b2.id)
 
     def test_created_at(self):
+        """Tests the created_at 
+        attribute of the BaseModel instance"""
         b1 = BaseModel()
         b2 = BaseModel()
         self.assertIsInstance(b1.created_at, datetime)
@@ -34,22 +44,27 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(b1.created_at, b2.created_at)
 
     def test_updated_at(self):
+        """test updated_at"""
         self.assertIsInstance(self.b.updated_at, datetime)
         previous_update = self.b.created_at
         self.b.name = "betty"
         self.assertNotEqual(previous_update, self.b.updated_at)
 
     def test_kwargs(self):
+        """test kwargs"""
         objdict = self.b.to_dict()
         b1 = BaseModel(**objdict)
         self.assertEqual(b1.id, self.b.id)
         self.assertIsNot(b1, self.b)
 
     def test___str__(self):
+        """Test str method"""
         b1 = BaseModel()
         self.assertIsInstance(b1.__str__(), str)
 
     def test_save(self):
+        """Tests the save method of
+        the BaseModel instance"""
         b1 = BaseModel()
         # b1.id = 1
         b1.save()

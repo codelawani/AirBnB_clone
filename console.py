@@ -74,7 +74,6 @@ class HBNBCommand(cmd.Cmd):
         class_string = arg[0]
         model_dict = storage.all()
         model_info = f"{class_string}.{arg[1]}"
-        # checkid = model_dict.find(f"{modelName}.{baseid}")
         if model_info not in model_dict:
             print("** no instance found **")
         else:
