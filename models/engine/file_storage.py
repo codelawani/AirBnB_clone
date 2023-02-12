@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """File storage module"""
-
 import json
 
 
 class FileStorage:
-    """serializes instances to a JSON file and deserializes JSON file to instances"""
+    """serializes instances to a JSON file and
+    deserializes JSON file to instances"""
 
     __file_path = "file.json"
     __objects = {}
@@ -15,12 +15,14 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id"""
+        """sets in __objects the obj with key
+        <obj class name>.id"""
         key = f"{obj.__class__.__name__}.{obj.id}"
         self.__objects[key] = obj
 
     def save(self):
-        """ serializes __objects to the JSON file (path: __file_path)"""
+        """ serializes __objects to the JSON file
+        (path: __file_path)"""
         objects = {key: obj.to_dict() for key, obj in self.__objects.items()}
         with open(self.__file_path, 'w') as f:
             json.dump(objects, f)
