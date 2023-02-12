@@ -9,6 +9,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models import storage
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
@@ -123,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """Updates an instance based on the class name
         and id by adding or updating attribute"""
-        arg = line.split()
+        arg = shlex.split(line)
         if len(arg) < 1:
             print("** class name missing **")
             return
