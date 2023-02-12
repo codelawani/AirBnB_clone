@@ -1,39 +1,57 @@
+#!/usr/bin/python3
+"""tests for class amenity"""
 import unittest
 import os
-from models.base_model import BaseModel
 from models.amenity import Amenity
+from models.base_model import BaseModel
+import pep8
+
 
 class TestAmenity(unittest.TestCase):
+    """this will test the Amenity class"""
+
     @classmethod
     def setUpClass(cls):
-        """creates class"""
-        cls.testAmenity = Amenity()
-        cls.testAmenity.name = "Amenity Name"
+        """set up for test"""
+        cls.lord = Amenity()
+        cls.lord.name = "Breakfast"
 
     @classmethod
-    def tearDownClass(cls):
-        """deletes test class"""
-        del cls.testAmenity
+    def teardown(cls):
+        """at the end of the test this will tear it down"""
+        del cls.lord
+
+    def tearDown(self):
+        """teardown"""
         try:
             os.remove("file.json")
-        except FileNotFoundError:
+        except:
             pass
 
-    def test_init_and_class_variables(self):
-        """tests init and class variables"""
-        self.assertTrue(isinstance(self.testAmenity, Amenity))
-        self.assertTrue(issubclass(type(self.testAmenity), BaseModel))
-        self.assertTrue('name' in self.testAmenity.__dict__)
-        self.assertTrue('id' in self.testAmenity.__dict__)
-        self.assertTrue('created_at' in self.testAmenity.__dict__)
-        self.assertTrue('updated_at' in self.testAmenity.__dict__)
+    def test_attr_Amen(self):
+        """chekcing if amenity have attibutes"""
+        self.assertTrue('id' in self.lord.__dict__)
+        self.assertTrue('created_at' in self.lord.__dict__)
+        self.assertTrue('updated_at' in self.lord.__dict__)
+        self.assertTrue('name' in self.lord.__dict__)
+
+    def test_inheritance_Amen(self):
+        """test if inheritance works"""
+        self.assertTrue(issubclass(self.lord.__class__, BaseModel), True)
+
+    def test_attrtype_Amen(self):
+        """test attr types in instance"""
+        self.assertEqual(type(self.lord.name), str)
 
     def test_save(self):
-        self.testAmenity.save()
-        self.assertTrue(self.testAmenity.updated_at != self.testAmenity.created_at)
+        """test the save function"""
+        self.lord.save()
+        self.assertNotEqual(self.lord.created_at, self.lord.updated_at)
 
     def test_to_dict(self):
-        self.assertEqual('to_dict' in dir(self.testAmenity), True)
+        """test if dictionary function works"""
+        self.assertEqual('to_dict' in dir(self.lord), True)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
