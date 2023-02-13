@@ -10,6 +10,7 @@ from models.place import Place
 from models.review import Review
 from models import storage
 import shlex
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -160,14 +161,174 @@ class HBNBCommand(cmd.Cmd):
 
             obj.save()
 
-    def do_User(self, line):
-        return self.do_all("User")
+    def do_BaseModel(self, line):
+        if line == ".all()":
+            return self.do_all("BaseModel")
+        # ':=' is called the walrus operator
+        # It returns the value assigned to it
+        # but '=' doesn't do so
+        # ':=' provides a way to assign variables inside expressions
+        # since '=' can't do so
+        # '=' operator will raise an error if u try to use it here
+        if x := re.findall('.show\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_show(f"BaseModel {x[0]}")
+        if x := re.findall('.destroy\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_destroy(f"BaseModel {x[0]}")
+        if line == ".count()":
+            count = 0
+            # check for objects of specified type in storage
+            for obj in storage.all().values():
+                if isinstance(obj, BaseModel):
+                    count += 1
+            print(count)
+            return
 
-    def do_Base(self, line):
-        return self.do_all("Base")
+    def do_User(self, line):
+        if line == ".all()":
+            return self.do_all("User")
+        # ':=' is called the walrus operator
+        # It returns the value assigned to it
+        # but '=' doesn't do so
+        # ':=' provides a way to assign variables inside expressions
+        # since '=' can't do so
+        # '=' operator will raise an error if u try to use it here
+        if x := re.findall('.show\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_show(f"User {x[0]}")
+        if x := re.findall('.destroy\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_destroy(f"User {x[0]}")
+        if line == ".count()":
+            count = 0
+            # check for objects of specified type in storage
+            for obj in storage.all().values():
+                if isinstance(obj, User):
+                    count += 1
+            print(count)
+            return
+
+    def do_State(self, line):
+
+        if line == ".all()":
+            return self.do_all("State")
+        # ':=' is called the walrus operator
+        # It returns the value assigned to it
+        # but '=' doesn't do so
+        # ':=' provides a way to assign variables inside expressions
+        # since '=' can't do so
+        # '=' operator will raise an error if u try to use it here
+        if x := re.findall('.show\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_show(f"State {x[0]}")
+        if x := re.findall('.destroy\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_destroy(f"State {x[0]}")
+        if line == ".count()":
+            count = 0
+            # check for objects of specified type in storage
+            for obj in storage.all().values():
+                if isinstance(obj, State):
+                    count += 1
+            print(count)
+            return
 
     def do_City(self, line):
-        return self.do_all("City")
+        if line == ".all()":
+            return self.do_all("City")
+        # ':=' is called the walrus operator
+        # It returns the value assigned to it
+        # but '=' doesn't do so
+        # ':=' provides a way to assign variables inside expressions
+        # since '=' can't do so
+        # '=' operator will raise an error if u try to use it here
+        if x := re.findall('.show\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_show(f"City {x[0]}")
+        if x := re.findall('.destroy\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_destroy(f"City {x[0]}")
+        if line == ".count()":
+            count = 0
+            # check for objects of specified type in storage
+            for obj in storage.all().values():
+                if isinstance(obj, City):
+                    count += 1
+            print(count)
+            return
+
+    def do_Amenity(self, line):
+        if line == ".all()":
+            return self.do_all("Amenity")
+        # ':=' is called the walrus operator
+        # It returns the value assigned to it
+        # but '=' doesn't do so
+        # ':=' provides a way to assign variables inside expressions
+        # since '=' can't do so
+        # '=' operator will raise an error if u try to use it here
+        if x := re.findall('.show\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_show(f"Amenity {x[0]}")
+        if x := re.findall('.destroy\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_destroy(f"Amenity {x[0]}")
+        if line == ".count()":
+            count = 0
+            # check for objects of specified type in storage
+            for obj in storage.all().values():
+                if isinstance(obj, Amenity):
+                    count += 1
+            print(count)
+            return
+
+    def do_Place(self, line):
+        if line == ".all()":
+            return self.do_all("Place")
+        # ':=' is called the walrus operator
+        # It returns the value assigned to it
+        # but '=' doesn't do so
+        # ':=' provides a way to assign variables inside expressions
+        # since '=' can't do so
+        # '=' operator will raise an error if u try to use it here
+        if x := re.findall('.show\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_show(f"Place {x[0]}")
+        if x := re.findall('.destroy\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_destroy(f"Place {x[0]}")
+        if line == ".count()":
+            count = 0
+            # check for objects of specified type in storage
+            for obj in storage.all().values():
+                if isinstance(obj, Place):
+                    count += 1
+            print(count)
+            return
+
+    def do_Review(self, line):
+        if line == ".all()":
+            return self.do_all("Review")
+        # ':=' is called the walrus operator
+        # It returns the value assigned to it
+        # but '=' doesn't do so
+        # ':=' provides a way to assign variables inside expressions
+        # since '=' can't do so
+        # '=' operator will raise an error if u try to use it here
+        if x := re.findall('.show\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_show(f"Review {x[0]}")
+        if x := re.findall('.destroy\("(.*?)"\)', line):
+            print(x[0])
+            return self.do_destroy(f"Review {x[0]}")
+        if line == ".count()":
+            count = 0
+            # check for objects of specified type in storage
+            for obj in storage.all().values():
+                if isinstance(obj, Review):
+                    count += 1
+            print(count)
+            return
 
 
 if __name__ == '__main__':
