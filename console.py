@@ -184,6 +184,24 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
             return
+        if x := re.findall('.update\("(.*?)", "(.*?)", (.*?)\)', line):
+            # Retrieves a tuple containing all captured items
+            # And stores the tuple in a list
+            return self.do_update(f"BaseModel {' '.join(x[0])}")
+
+        #       Alternate solution
+        # if x := re.findall(".update\((.*?)\)", line):
+        #    argstring = x[0].strip('\'')
+        #    args = argstring.split(', ')
+        #    do_update_argstring = f"BaseModel {' '.join(args)}"
+        #    return self.do_update(do_update_argstring)
+
+        if x := re.findall('.update\("(.*?)", (.*?)\)', line):
+            obj_id = x[0][0]
+            obj_dict = eval(x[0][1])
+            for key, value in obj_dict.items():
+                u_str = f"BaseModel {obj_id} {key} {value}"
+                self.do_update(u_str)
 
     def do_User(self, line):
         if line == ".all()":
@@ -208,6 +226,24 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
             return
+        if x := re.findall('.update\("(.*?)", "(.*?)", (.*?)\)', line):
+            # Retrieves a tuple containing all captured items
+            # And stores the tuple in a list
+            return self.do_update(f"User {' '.join(x[0])}")
+
+        #       Alternate solution
+        # if x := re.findall(".update\((.*?)\)", line):
+        #    argstring = x[0].strip('\'')
+        #    args = argstring.split(', ')
+        #    do_update_argstring = f"User {' '.join(args)}"
+        #    return self.do_update(do_update_argstring)
+
+        if x := re.findall('.update\("(.*?)", (.*?)\)', line):
+            obj_id = x[0][0]
+            obj_dict = eval(x[0][1])
+            for key, value in obj_dict.items():
+                u_str = f"User {obj_id} {key} {value}"
+                self.do_update(u_str)
 
     def do_State(self, line):
 
@@ -233,6 +269,24 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
             return
+        if x := re.findall('.update\("(.*?)", "(.*?)", (.*?)\)', line):
+            # Retrieves a tuple containing all captured items
+            # And stores the tuple in a list
+            return self.do_update(f"State {' '.join(x[0])}")
+
+        #       Alternate solution
+        # if x := re.findall(".update\((.*?)\)", line):
+        #    argstring = x[0].strip('\'')
+        #    args = argstring.split(', ')
+        #    do_update_argstring = f"State {' '.join(args)}"
+        #    return self.do_update(do_update_argstring)
+
+        if x := re.findall('.update\("(.*?)", (.*?)\)', line):
+            obj_id = x[0][0]
+            obj_dict = eval(x[0][1])
+            for key, value in obj_dict.items():
+                u_str = f"State {obj_id} {key} {value}"
+                self.do_update(u_str)
 
     def do_City(self, line):
         if line == ".all()":
@@ -257,6 +311,24 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
             return
+        if x := re.findall('.update\("(.*?)", "(.*?)", (.*?)\)', line):
+            # Retrieves a tuple containing all captured items
+            # And stores the tuple in a list
+            return self.do_update(f"City {' '.join(x[0])}")
+
+        #       Alternate solution
+        # if x := re.findall(".update\((.*?)\)", line):
+        #    argstring = x[0].strip('\'')
+        #    args = argstring.split(', ')
+        #    do_update_argstring = f"City {' '.join(args)}"
+        #    return self.do_update(do_update_argstring)
+
+        if x := re.findall('.update\("(.*?)", (.*?)\)', line):
+            obj_id = x[0][0]
+            obj_dict = eval(x[0][1])
+            for key, value in obj_dict.items():
+                u_str = f"City {obj_id} {key} {value}"
+                self.do_update(u_str)
 
     def do_Amenity(self, line):
         if line == ".all()":
@@ -281,6 +353,24 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
             return
+        if x := re.findall('.update\("(.*?)", "(.*?)", (.*?)\)', line):
+            # Retrieves a tuple containing all captured items
+            # And stores the tuple in a list
+            return self.do_update(f"Amenity {' '.join(x[0])}")
+
+        #       Alternate solution
+        # if x := re.findall(".update\((.*?)\)", line):
+        #    argstring = x[0].strip('\'')
+        #    args = argstring.split(', ')
+        #    do_update_argstring = f"Amenity {' '.join(args)}"
+        #    return self.do_update(do_update_argstring)
+
+        if x := re.findall('.update\("(.*?)", (.*?)\)', line):
+            obj_id = x[0][0]
+            obj_dict = eval(x[0][1])
+            for key, value in obj_dict.items():
+                u_str = f"Amenity {obj_id} {key} {value}"
+                self.do_update(u_str)
 
     def do_Place(self, line):
         if line == ".all()":
@@ -305,6 +395,24 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
             return
+        if x := re.findall('.update\("(.*?)", "(.*?)", (.*?)\)', line):
+            # Retrieves a tuple containing all captured items
+            # And stores the tuple in a list
+            return self.do_update(f"Place {' '.join(x[0])}")
+
+        #       Alternate solution
+        # if x := re.findall(".update\((.*?)\)", line):
+        #    argstring = x[0].strip('\'')
+        #    args = argstring.split(', ')
+        #    do_update_argstring = f"Place {' '.join(args)}"
+        #    return self.do_update(do_update_argstring)
+
+        if x := re.findall('.update\("(.*?)", (.*?)\)', line):
+            obj_id = x[0][0]
+            obj_dict = eval(x[0][1])
+            for key, value in obj_dict.items():
+                u_str = f"Place {obj_id} {key} {value}"
+                self.do_update(u_str)
 
     def do_Review(self, line):
         if line == ".all()":
@@ -329,6 +437,24 @@ class HBNBCommand(cmd.Cmd):
                     count += 1
             print(count)
             return
+        if x := re.findall('.update\("(.*?)", "(.*?)", (.*?)\)', line):
+            # Retrieves a tuple containing all captured items
+            # And stores the tuple in a list
+            return self.do_update(f"Review {' '.join(x[0])}")
+
+        #       Alternate solution
+        # if x := re.findall(".update\((.*?)\)", line):
+        #    argstring = x[0].strip('\'')
+        #    args = argstring.split(', ')
+        #    do_update_argstring = f"Review {' '.join(args)}"
+        #    return self.do_update(do_update_argstring)
+
+        if x := re.findall('.update\("(.*?)", (.*?)\)', line):
+            obj_id = x[0][0]
+            obj_dict = eval(x[0][1])
+            for key, value in obj_dict.items():
+                u_str = f"Review {obj_id} {key} {value}"
+                self.do_update(u_str)
 
 
 if __name__ == '__main__':
