@@ -48,3 +48,35 @@ section.filters button {
 	margin: 0px 0px 0px 30px;
 	box-sizing: border-box;
 }
+
+.filters .popover {
+	display: none;
+	background-color: #FAFAFA;
+	width: 100%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-top: 15px;
+}
+
+.locations:hover .popover {
+	display: block;
+}
+
+.amenities:hover .popover {
+	display: block;
+}
+
+.popover h2 {
+	font-size: 16px;
+	margin-left: 15px;
+	margin-bottom: 0px;
+	text-align: left;
+}
+
+.popover h2+ul {
+	margin-top: 2px;
+}
+
+.popover ul {
+	list-style-type: none;
+}
