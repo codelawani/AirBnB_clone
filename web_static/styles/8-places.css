@@ -1,6 +1,7 @@
 .places h1 {
-	text-align: left;
 	font-size: 30px;
+	display: flex;
+	justify-content: left;
 }
 
 .places h2 {
@@ -49,12 +50,13 @@
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 
 .max_guest,
 .number_bathrooms,
 .number_rooms {
-	display: inline-block;
 	width: 100px;
 }
 
