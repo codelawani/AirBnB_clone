@@ -4,7 +4,9 @@
 	justify-content: left;
 }
 
-.places h2 {
+.top1 h2,
+.top2 h2,
+.top3 h2 {
 	font-size: 30px;
 	text-align: center;
 	display: inline-block;
@@ -85,4 +87,57 @@
 	text-align: left;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.places li {
+	list-style-type: none;
+}
+
+.places .amenities ul,
+.reviews ul {
+	text-align: left;
+	padding-left: 0;
+}
+
+.reviews,
+.places .amenities {
+	margin-top: 40px;
+}
+
+.places .amenities h2,
+.reviews h2 {
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+	text-align: left;
+}
+
+
+.reviews h3 {
+	font-size: 14px;
+}
+
+.reviews p {
+	font-size: 12px;
+}
+
+.icon_pet,
+.icon_wifi,
+.icon_tv {
+	background-position: left top;
+	background-repeat: no-repeat;
+	line-height: 50px;
+	padding-left: 5em;
+	margin-left: 0;
+}
+
+.icon_pet {
+	background-image: url(../images/icon_pets.png)
+}
+
+.icon_tv {
+	background-image: url(../images/icon_tv.png)
+}
+
+.icon_wifi {
+	background-image: url(../images/icon_wifi.png)
 }

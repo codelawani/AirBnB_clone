@@ -24,7 +24,7 @@ section.filters button {
 }
 
 .locations,
-.amenities {
+.filters .amenities {
 	height: 100%;
 	width: 25%;
 	float: left;
@@ -62,7 +62,7 @@ section.filters button {
 	display: block;
 }
 
-.amenities:hover .popover {
+.filters .amenities:hover .popover {
 	display: block;
 }
 
